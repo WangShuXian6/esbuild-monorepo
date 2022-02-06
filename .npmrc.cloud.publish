@@ -1,0 +1,10 @@
+# 云桌面环境发布包配置
+registry=http://nexus.xxxxxx.com/repository/npm-taobao/
+; 为作用域包设置新的注册表
+@octopus:registry=http://nexus.xxxxx.com/repository/npm-local/
+@hrbbcf:registry=http://nexus.xxxxx.com/repository/npm-local/
+//nexus.xxxxx.com/repository/npm-local/:_auth=d2FuZxxxxMjI=
+//nexus.xxxxx.com/repository/npm-local/:username=airmusic@msn.com
+//nexus.xxxxx.com/repository/npm-local/:_password=xxxxjI=
+email=airmusic@msn.com
+always-auth=true
