@@ -9,5 +9,5 @@ export interface UiProps {
 }
 
 export const Ui = ({ title }: UiProps) => {
-  return <div className={styles.aa}>ui-{title || ''}</div>
+  return <div className={styles.aa}>ui--{title || ''}</div>
 }

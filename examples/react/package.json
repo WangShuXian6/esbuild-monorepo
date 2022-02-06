@@ -1,10 +1,10 @@
 {
   "name": "react-ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
-    "airmusic-com-a": "1.0.0",
-    "airmusic-com-ui": "1.0.0",
+    "airmusic-com-a": "1.0.1",
+    "airmusic-com-ui": "1.0.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -20,8 +20,8 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "dts":"node -v",
-    "lint":"node -v",
+    "dts": "node -v",
+    "lint": "node -v",
     "start": "react-scripts start",
     "build": "node -v",
     "build:real": "react-scripts build",

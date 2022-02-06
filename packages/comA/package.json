@@ -1,6 +1,6 @@
 {
   "name": "airmusic-com-a",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "dts":"npm-dts generate -f --entry src/index.ts --output dist/index.d.ts -L debug",
+    "dts": "npm-dts generate -f --entry src/index.ts --output dist/index.d.ts -L debug",
     "build": "node ../../scripts/build.tool.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "lint-staged"
