@@ -1,3 +1,3 @@
-export const a=()=>{
-    console.log('a000a')
+export const a = () => {
+  console.log('a000a')
 }
