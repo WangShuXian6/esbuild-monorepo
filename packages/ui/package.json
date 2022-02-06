@@ -1,0 +1,59 @@
+{
+  "name": "airmusic-com-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "lint-staged": {
+    "src/**/*.{html,css,scss,less}": [
+      "stylelint 'src/**/*.{html,css,scss,less}' --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint 'src/**/*.{ts,tsx}'  --fix",
+      "prettier --parser=typescript --write"
+    ],
+    "src/**/*.{js,jsx}": [
+      "eslint 'src/**/*.{js,jsx}'  --fix",
+      "prettier --write"
+    ]
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "dts": "npm-dts generate -f --entry src/index.ts --output dist/index.d.ts -L debug",
+    "build": "node ../../scripts/build.react.ui.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "lint-staged"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.15",
+    "@types/react": "^17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "postcss-scss": "^4.0.3",
+    "prettier": "^2.5.1",
+    "stylelint": "^14.3.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-prettier": "^2.0.0"
+  }
+}
