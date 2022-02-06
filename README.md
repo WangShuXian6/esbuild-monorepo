@@ -39,3 +39,66 @@ yarn build
 ```bash
 yarn storybook
 ```
+
+## 发布包
+
+```bash
+# changeset 更新文件
+yarn cadd
+
+# changeset 更新各包版本 输入新的版本号
+yarn version
+
+# 发布至仓库
+yarn release
+```
+
+## 在第三方项目中使用包
+
+>项目更目录添加文件 `.npmrc`
+
+```npmrc
+; 为作用域包设置新的注册表
+@ocxxx:registry=http://nexus.xxx.com/repository/npm-local/
+@xxx:registry=http://nexus.xxx.com/repository/npm-local/
+```
+
+>安装
+
+```bash
+yarn add @xxx/ui
+```
+
+***
+
+## npm
+
+### 配置publish帐户
+
+>加密用户名+密码获取auth
+
+```bash
+echo -n 'admin:admin123' | openssl base64
+```
+
+>为 `.npmrc` 配置加密后的密码
+
+```bash
+echo -n 'Kele9922' | openssl base64
+```
+
+>编辑.npmrc
+
+```npmrc
+registry=http://nexus.xxx.com/repository/npm-local/   // npm组
+email=demo@demo.com // 配置的邮箱，必填
+always-auth=true
+_auth="ZGV2xxxxxdasd" // base64加密的用户名+密码
+```
+
+## ignore
+
+```ts
+            // @ts-ignore
+            // eslint-disable-next-line no-undef
+```
