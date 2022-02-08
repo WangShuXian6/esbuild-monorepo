@@ -9,6 +9,7 @@ const cssModulesPlugin = require("esbuild-css-modules-plugin");
 const { lessLoader } = require("esbuild-plugin-less");
 const svgrPlugin = require("esbuild-plugin-svgr"); //import Icon from './icon.svg';
 const { sassPlugin, postcssModules } = require("esbuild-sass-plugin");//sassPlugin({type: "lit-css"})
+const { dtsPlugin } = require("esbuild-plugin-d.ts");
 
 const iiefTask = () => {
   esbuild
@@ -40,7 +41,8 @@ const iiefTask = () => {
           transform: postcssModules({
             localsConvention: 'camelCaseOnly'
           })
-        })
+        }),
+        dtsPlugin()
       ],
       inject: ["../../scripts/react-shim.js"],
     })
@@ -77,7 +79,8 @@ const esmTask = () => {
           transform: postcssModules({
             localsConvention: 'camelCaseOnly'
           })
-        })
+        }),
+        dtsPlugin()
       ],
       inject: ["../../scripts/react-shim.js"],
     })

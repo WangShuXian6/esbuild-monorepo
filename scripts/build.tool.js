@@ -1,84 +1,80 @@
 // @ts-nocheck
-//@ts-nocheck
-const { realpathSync, readFileSync, writeFileSync, renameSync } = require("fs");
-const esbuild = require("esbuild");
-//const { basename } = require("path");
-const path = require("path");
-
-const { spawnSync } = require("child_process");
-
-const { nodeExternalsPlugin } = require("esbuild-node-externals");
+const esbuild = require('esbuild')
+const { nodeExternalsPlugin } = require('esbuild-node-externals')
 // 自动排除捆绑版本中的所有node_modules
-const { Generator } = require("npm-dts");
-
-// new Generator({
-//   entry: "src/index.ts",
-//   output: "dist/index.d.ts",
-// }).generate();
-
-// new Generator({
-//   entry: path.resolve(process.cwd(), '"src/index.ts'),
-//   root: path.resolve(process.cwd(), 'src'),
-//   tmp: path.resolve(process.cwd(), 'cache/tmp'),
-//   tsc: '--extendedDiagnostics',
-// }).generate()
-
-//@ts-ignore
-//const  basePath: `${__dirname}/..`,
+const svgrPlugin = require('esbuild-plugin-svgr') //import Icon from './icon.svg';
+const { sassPlugin, postcssModules } = require('esbuild-sass-plugin') //sassPlugin({type: "lit-css"})
+const { dtsPlugin } = require('esbuild-plugin-d.ts')
 
 const iiefTask = () => {
   esbuild
     .build({
       //logLevel: 'silent',
       //absWorkingDir: basePath,
-      entryPoints: ["./src/index.ts"],
-      outfile: "./dist/index.js",
+      entryPoints: ['./src/index.ts'],
+      entryNames: '[name]',
+      outdir: './dist/',
       bundle: true,
-      minify: true, //process.env.NODE_ENV === "production"
-      platform: "browser", //"node", "browser"
+      // minify: true, //process.env.NODE_ENV === "production"
+      platform: 'browser', //"node", "browser"
       sourcemap: true, //process.env.NODE_ENV !== "production"
-      target: "es6",
-      plugins: [nodeExternalsPlugin()],
+      external: ['react', 'react-dom'],
+      target: 'es6',
+      loader: {},
+      plugins: [nodeExternalsPlugin(), dtsPlugin()],
+      inject: ['../../scripts/react-shim.js']
     })
-    .catch(() => process.exit(1));
-};
+    .catch(() => process.exit(1))
+}
 
 const esmTask = () => {
   esbuild
     .build({
       //logLevel: 'silent',
       //absWorkingDir: basePath,
-      entryPoints: ["./src/index.ts"],
-      format: "esm",
-      outfile: "./dist/index.esm.js",
+      entryPoints: ['./src/index.ts'],
+      entryNames: '[name].esm',
+      outdir: './dist/', // outdir 与 outfile 互斥, outdir 与 entryNames 成对出现，互补
+      format: 'esm',
+      //outfile: "./dist/index.esm.js",
+
       bundle: true,
-      minify: true,
+      // minify: true,
       //platform: "browser", //"node", "browser"
       sourcemap: true,
-      target: "esnext",
-      plugins: [nodeExternalsPlugin()],
+      external: ['react', 'react-dom'],
+      target: 'esnext',
+      loader: {},
+      plugins: [nodeExternalsPlugin(), dtsPlugin()],
+      inject: ['../../scripts/react-shim.js']
     })
-    .catch(() => process.exit(1));
-};
+    .catch(() => process.exit(1))
+}
 
 const cjsTask = () => {
   esbuild
     .build({
       //logLevel: 'silent',
       //absWorkingDir: basePath,
-      entryPoints: ["./src/index.ts"],
-      outfile: "./dist/index.cjs.js",
-      bundle: true,
-      minify: true,
-      platform: "node", //"node", "browser"
-      sourcemap: true,
-      format: "cjs",
-      target: ["esnext", "node12.22.0"],
-      plugins: [nodeExternalsPlugin()],
-    })
-    .catch(() => process.exit(1));
-};
+      entryPoints: ['./src/index.ts'],
+      entryNames: '[name].cjs',
+      outdir: './dist/', // outdir 与 outfile 互斥, outdir 与 entryNames 成对出现，互补
 
-iiefTask();
-esmTask();
-cjsTask();
+      format: 'cjs',
+      //outfile: "./dist/index.esm.js",
+      bundle: true,
+      //minify: true,
+      platform: 'node', //"node", "browser"
+      sourcemap: true,
+      format: 'cjs',
+      target: ['esnext', 'node12.22.0'],
+      loader: {},
+      plugins: [nodeExternalsPlugin(), dtsPlugin()],
+      inject: ['../../scripts/react-shim.js']
+    })
+    .catch(() => process.exit(1))
+}
+
+iiefTask()
+esmTask()
+cjsTask()

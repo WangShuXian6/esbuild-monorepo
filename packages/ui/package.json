@@ -25,13 +25,18 @@
     "dts": "npm-dts generate -f --entry src/index.ts --output dist/index.d.ts -L debug",
     "build": "node ../../scripts/build.react.ui.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "all":"yarn clean && yarn dts && yarn build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "peerDependencies": {
     "react": "^17.0.2"
+  },
+  "dependencies": {
+    "airmusic-com-a": "1.0.4",
+    "airmusic-com-ui": "1.0.4"
   },
   "devDependencies": {
     "@types/node": "^17.0.15",
