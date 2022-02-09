@@ -26,7 +26,10 @@
     "build": "node ../../scripts/build.react.ui.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "lint-staged",
-    "all":"yarn clean && yarn dts && yarn build"
+    "all":"yarn clean && yarn dts && yarn build",
+    "tsc:c":"tsc src/*.tsx --project tsconfig.json --declaration --declarationDir dist --experimentalDecorators --outDir dist --pretty --removeComments --skipLibCheck",
+    "bu":"tsc --project tsconfig.production.json",
+    "bu2": "node ../../scripts/build.tsc.js --tsconfig tsconfig.production.json"
   },
   "keywords": [],
   "author": "",

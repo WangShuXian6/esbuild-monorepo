@@ -20,7 +20,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "ex1": "yarn workspace react-ts start",
-    "ex2": "yarn workspace next-demo dev"
+    "ex2": "yarn workspace next-demo dev",
+    "bu3": "yarn workspace airmusic-com-ui bu2"
   },
   "keywords": [],
   "author": "",

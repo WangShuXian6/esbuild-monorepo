@@ -7,5 +7,6 @@
       // package-specific options
       "esModuleInterop": true,
       "jsx": "react-jsx",
-    }
+    },
+    "exclude": ["node_modules", "lib", "dist","*.stories.mdx","*.stories.tsx"]
   }

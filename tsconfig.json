@@ -31,7 +31,7 @@
     "sourceMap": true,
     "strict": true,
     "strictBindCallApply": false,
-    "target": "es6",
+    "target": "esnext",
     "allowSyntheticDefaultImports": true,
     "types": ["node"],
     "noErrorTruncation": true, // move me up to @sentry/typescript
