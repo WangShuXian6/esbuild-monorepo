@@ -1,5 +1,5 @@
 {
-  "name": "airmusic-com-b",
+  "name": "airmusic-com-ui-css",
   "version": "1.0.4",
   "description": "",
   "main": "dist/index.js",
@@ -9,12 +9,23 @@
   "scripts": {
     "clean": "rimraf dist",
     "dts": "npm-dts generate -f --entry src/index.ts --output dist/index.d.ts -L debug",
-    "build": "node ../../scripts/build.tool.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node ../../scripts/build.react.ui.css.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "all":"yarn clean && yarn dts && yarn build",
+    "tsc:c":"tsc src/*.tsx --project tsconfig.json --declaration --declarationDir dist --experimentalDecorators --outDir dist --pretty --removeComments --skipLibCheck",
+    "bu":"tsc --project tsconfig.production.json",
+    "bu2": "yarn clean && node ../../scripts/build.tsc2.js --tsconfig tsconfig.production.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+  "dependencies": {
+    "airmusic-com-a": "1.0.4",
+    "airmusic-com-ui": "1.0.4"
+  },
   "devDependencies": {
     "@types/node": "^17.0.15",
     "@types/react": "^17.0.39",

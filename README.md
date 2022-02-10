@@ -102,3 +102,59 @@ _auth="ZGV2xxxxxdasd" // base64加密的用户名+密码
             // @ts-ignore
             // eslint-disable-next-line no-undef
 ```
+
+
+## css 与 cssModule 无法混用，因为必须只能一种生效
+引入css时，则module不生效，
+引入module时，则没有css文件用以引入
+
+## 单包lint
+```json
+  "lint-staged": {
+    "src/**/*.{html,css,scss,less}": [
+      "stylelint 'src/**/*.{html,css,scss,less}' --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint 'src/**/*.{ts,tsx}'  --fix",
+      "prettier --parser=typescript --write"
+    ],
+    "src/**/*.{js,jsx}": [
+      "eslint 'src/**/*.{js,jsx}'  --fix",
+      "prettier --write"
+    ]
+  },
+```
+
+## monorepo lint
+```json
+"scripts": {
+    "lint": "lint-staged"
+  },
+"lint-staged": {
+    "src/**/*.{html,css,scss,less}": [
+      "stylelint 'packages/comA/src/**/*.{html,css,scss,less}' --fix",
+      "stylelint 'packages/comB/src/**/*.{html,css,scss,less}' --fix",
+      "stylelint 'packages/ui/src/**/*.{html,css,scss,less}' --fix",
+      "stylelint 'packages/uiCss/src/**/*.{html,css,scss,less}' --fix",
+      "stylelint 'packages/uiCssModule/src/**/*.{html,css,scss,less}' --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint 'packages/comA/src/**/*.{ts,tsx}'  --fix",
+      "eslint 'packages/comB/src/**/*.{ts,tsx}'  --fix",
+      "eslint 'packages/ui/src/**/*.{ts,tsx}'  --fix",
+      "eslint 'packages/uiCss/src/**/*.{ts,tsx}'  --fix",
+      "eslint 'packages/uiCssModule/src/**/*.{ts,tsx}'  --fix",
+      "prettier --parser=typescript --write"
+    ],
+    "src/**/*.{js,jsx}": [
+      "eslint 'packages/comA/src/**/*.{js,jsx}'  --fix",
+      "eslint 'packages/comB/src/**/*.{js,jsx}'  --fix",
+      "eslint 'packages/ui/src/**/*.{js,jsx}'  --fix",
+      "eslint 'packages/uiCss/src/**/*.{js,jsx}'  --fix",
+      "eslint 'packages/uiCssModule/src/**/*.{js,jsx}'  --fix",
+      "prettier --write"
+    ]
+  },
+```

@@ -1,5 +1,5 @@
 import React from 'react'
-import  './index.scss'
+import styles from   './index.module.scss'
 //import styles from './index.module.scss'
 //import styles from "./index.module.css";
 //import styles from "./index.module.less";
@@ -17,15 +17,14 @@ export interface UiProps {
 export const Ui = ({ title }: UiProps) => {
   //a()
   return (
-    <div className='aa'>
-    {/* <div className={styles.aa}> */}
+    <div className={styles.aa}>
       ui---{title || ''}
       <Demo />
-      <img className='img' src={svgImage} alt="svg" />
-      <img className='img' src={pngImage} alt="png" />
-      <img className='img' src={jpgImage} alt="jpg" />
+      <img className={styles.img} src={svgImage} alt="svg" />
+      <img className={styles.img} src={pngImage} alt="png" />
+      <img className={styles.img} src={jpgImage} alt="jpg" />
 
-      <div className='bg'>jpg bg</div>
+      <div className={styles.bg}>jpg bg</div>
     </div>
   )
 }

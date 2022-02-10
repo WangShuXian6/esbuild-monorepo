@@ -1,0 +1,38 @@
+{
+  //"extends": "../../tsconfig.json",
+
+  "include": ["src/**/*", "global.d.ts"],
+
+  "compilerOptions": {
+    // package-specific options
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    //"incremental": true,//增量编译 文件有改动才会编译
+    //"tsBuildInfoFile": "./ts_temp/.tsbuildinfo",//增量编译零时文件
+    "types": [],
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+    "declarationDir": "./dist",
+    "declarationMap": true,
+    "removeComments": true,
+    "allowJs": true,
+    "lib": ["DOM", "ESNext", "WebWorker"],
+    "target": "ESNext",
+    "pretty": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "lib", "dist", "**/*.stories.mdx", "**/*.stories.tsx"],
+
+  // "files": [
+  //   "./src/*.tsx"
+  // ],
+  "typeAcquisition": {
+    "exclude": ["jest", "mocha"]
+  },
+  "watchOptions": {
+    "excludeDirectories": ["**/node_modules", "_build", "temp/*", "tsc_temp", "dist"],
+    "excludeFiles": ["node_modules", "lib", "dist", "*.stories.mdx", "*.stories.tsx"]
+  }
+}
