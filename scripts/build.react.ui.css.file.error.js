@@ -1,11 +1,13 @@
 // @ts-nocheck
-// // 不支持在样式中使用背景图片 废弃
 const esbuild = require('esbuild')
 const { nodeExternalsPlugin } = require('esbuild-node-externals')
 // 自动排除捆绑版本中的所有node_modules
-const svgrPlugin = require('esbuild-plugin-svgr') //import Icon from './icon.svg';
+//const svgrPlugin = require("esbuild-plugin-svgr"); //import Icon from './icon.svg';
 const { sassPlugin, postcssModules } = require('esbuild-sass-plugin') //sassPlugin({type: "lit-css"})
 const { dtsPlugin } = require('esbuild-plugin-d.ts')
+const cssModulesPlugin = require('esbuild-css-modules-plugin')
+//const sassPlugin = require('esbuild-plugin-sass') // sassPlugin() //路径不兼容windows
+const path = require('path')
 
 const iiefTask = () => {
   esbuild
@@ -28,7 +30,16 @@ const iiefTask = () => {
         '.jpeg': 'file',
         '.gif': 'file'
       },
-      plugins: [nodeExternalsPlugin(), sassPlugin(), dtsPlugin()],
+      plugins: [
+        nodeExternalsPlugin(),
+        sassPlugin({
+          precompile(source, pathname) {
+            const basedir = path.dirname(pathname).replace(/\\/g, '/')
+            return source.replace(/(url\(['"]?)(\.\.?\/)?([^'")]+['"]?\))/g, `$1${basedir}/$2$3`)
+          }
+        }),
+        dtsPlugin()
+      ],
       inject: ['../../scripts/react-shim.js']
     })
     .catch(() => process.exit(1))
@@ -57,7 +68,16 @@ const esmTask = () => {
         '.jpeg': 'file',
         '.gif': 'file'
       },
-      plugins: [nodeExternalsPlugin(), sassPlugin(), dtsPlugin()],
+      plugins: [
+        nodeExternalsPlugin(),
+        sassPlugin({
+          precompile(source, pathname) {
+            const basedir = path.dirname(pathname).replace(/\\/g, '/')
+            return source.replace(/(url\(['"]?)(\.\.?\/)?([^'")]+['"]?\))/g, `$1${basedir}/$2$3`)
+          }
+        }),
+        dtsPlugin()
+      ],
       inject: ['../../scripts/react-shim.js']
     })
     .catch(() => process.exit(1))

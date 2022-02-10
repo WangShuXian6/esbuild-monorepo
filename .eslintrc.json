@@ -38,7 +38,8 @@
     "@typescript-eslint/no-explicit-any": "off", // any 类型
     "@typescript-eslint/ban-ts-comment": "off", // "@ts-ignore"
     "react/react-in-jsx-scope": "off", // 'React' must be in scope when using JSX
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-var-requires": 0
   },
   //rules 数组中自定义的规则会覆盖 prettier/@typescript-eslint 配置
   //代码格式化 规则应该在 .prettierrc 中配置

@@ -9,8 +9,11 @@ import {a} from 'airmusic-com-a'
 // import 'airmusic-com-ui/dist/index.css' //errror
 // import {Ui} from 'airmusic-com-ui' //error
 
-import 'airmusic-com-ui-module/dist/index.css'
-import {Ui} from 'airmusic-com-ui-module'
+// import 'airmusic-com-ui-module/dist/index.css'
+// import {Ui} from 'airmusic-com-ui-module'
+
+import 'airmusic-com-ui-file/dist/index.css'
+import {Ui} from 'airmusic-com-ui-file'
 
 function App() {
   a()
