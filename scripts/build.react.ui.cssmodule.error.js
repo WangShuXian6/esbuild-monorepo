@@ -1,4 +1,7 @@
 // @ts-nocheck
+
+// 不支持在样式中使用背景图片 废弃
+
 const esbuild = require("esbuild");
 const { nodeExternalsPlugin } = require("esbuild-node-externals");
 // 自动排除捆绑版本中的所有node_modules

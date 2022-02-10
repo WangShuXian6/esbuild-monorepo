@@ -23,7 +23,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "dts": "npm-dts generate -f --entry src/index.ts --output dist/index.d.ts -L debug",
-    "build": "node ../../scripts/build.react.ui.cssmodule.js",
+    "build": "node ../../scripts/build.react.ui.cssmodule.v2.js",
+    "build3": "node ../../scripts/build.react.ui.cssmodule.file.js",
+    "build2": "node ../../scripts/build.react.ui.cssmodule.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "node -v",
     "lint:real": "lint-staged",
