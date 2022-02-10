@@ -158,3 +158,14 @@ _auth="ZGV2xxxxxdasd" // base64加密的用户名+密码
     ]
   },
 ```
+<div className="subheading">组件需引入依赖包相关样式文件</div>
+
+>例如 @hrbbcf/business 包 中的 Ocr 组件  依赖 @hrbbcf/base 包的 Header 组件，需要在 Ocr 组件中引入 base 包的样式文件 
+
+>默认已在 @hrbbcf/business 全局导入依赖的样式文件，但 storybook 不会引用全局包，会导致组件丢失样式
+
+>故需要在 Ocr 组件  `Ocr.tsx` 中再次引入样式 
+
+```tsx
+import '@hrbbcf/business/dist/index.css'
+```
