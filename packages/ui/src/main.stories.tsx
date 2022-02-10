@@ -1,3 +1,3 @@
-export const Test=()=>{
-    
+export const Test = () => {
+  return 1
 }
