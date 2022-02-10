@@ -5,11 +5,27 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "lint-staged": {
+    "src/**/*.{html,css,scss,less}": [
+      "stylelint 'src/**/*.{html,css,scss,less}' --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint 'src/**/*.{ts,tsx}'  --fix",
+      "prettier --parser=typescript --write"
+    ],
+    "src/**/*.{js,jsx}": [
+      "eslint 'src/**/*.{js,jsx}'  --fix",
+      "prettier --write"
+    ]
+  },
   "scripts": {
     "clean": "rimraf dist",
     "dts": "npm-dts generate -f --entry src/index.ts --output dist/index.d.ts -L debug",
     "build": "node ../../scripts/build.tool.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node -v",
+    "lint:real": "lint-staged"
   },
   "keywords": [],
   "author": "",
