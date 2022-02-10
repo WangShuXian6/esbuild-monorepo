@@ -6,7 +6,7 @@ const { nodeExternalsPlugin } = require("esbuild-node-externals");
 //const { sassPlugin, postcssModules } = require("esbuild-sass-plugin"); //sassPlugin({type: "lit-css"})
 const { dtsPlugin } = require("esbuild-plugin-d.ts");
 const cssModulesPlugin = require('esbuild-css-modules-plugin');
-const sassPlugin = require("esbuild-plugin-sass"); // sassPlugin()
+const sassPlugin = require("esbuild-plugin-sass"); // sassPlugin() //路径不兼容windows
 
 const iiefTask = () => {
   esbuild
