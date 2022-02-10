@@ -11,7 +11,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  layout: 'centered',// centered: 使组件在 Canvas 中水平和垂直居中 // fullscreen: 允许组件扩展到 Canvas 的全宽和全高 // padded：（默认）在组件周围添加额外的填充
+  parameters: {
+    layout: 'centered' // centered: 使组件在 Canvas 中水平和垂直居中 // fullscreen: 允许组件扩展到 Canvas 的全宽和全高 // padded：（默认）在组件周围添加额外的填充
+  }
 } as ComponentMeta<typeof Button>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
